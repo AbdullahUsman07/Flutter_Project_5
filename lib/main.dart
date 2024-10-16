@@ -12,7 +12,28 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller= AnimationController(
+      duration: const Duration(seconds: 1),
+      vsync: this, )..repeat(reverse: true);
+
+      _animation=Tween<double>(begin:0.3 ,end: 1.0).animate(_controller);
+  }
+
+  @override
+  void dispose(){
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,21 +96,24 @@ class _HomePageState extends State<HomePage> {
     return Positioned(
         top: top,
         left: left,
-        child: Container(
-          height: 20,
-          width: 20,
-          decoration: BoxDecoration(
-            color: Colors.blue.withOpacity(0.3),
-            shape: BoxShape.circle,
-          ),
-          child: Center(
-            child: Container(
-              height: 20,
-              width: 20,
-              margin: const EdgeInsets.all(5.0),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.blue,
+        child: FadeTransition(
+          opacity: _animation,
+          child: Container(
+            height: 20,
+            width: 20,
+            decoration: BoxDecoration(
+              color: Colors.blue.withOpacity(0.3),
+              shape: BoxShape.circle,
+            ),
+            child: Center(
+              child: Container(
+                height: 20,
+                width: 20,
+                margin: const EdgeInsets.all(5.0),
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.blue,
+                ),
               ),
             ),
           ),
