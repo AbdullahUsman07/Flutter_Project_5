@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:project_5/extension/stringextension.dart';
+import 'package:project_5/model/customermodel.dart';
+import 'package:project_5/model/homeViewModel.dart';
 import 'package:project_5/theme/text.dart';
 
 class Content extends StatelessWidget {
-  const Content({super.key});
+   Content({super.key,required this.customer});
+
+  CustomerModel customer;
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +60,12 @@ class Content extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('4312 5555 6788',style: GoogleFonts.sourceCodePro(
+                    Text(customer.debitcode.formattedDebit,style: GoogleFonts.sourceCodePro(
                       fontWeight: FontWeight.bold,
                       fontSize: 24,
                       color: Colors.grey.shade700,
                     )),
-                    Text('Abdullah Usman',style:GoogleFonts.sourceCodePro(
+                    Text(customer.name,style:GoogleFonts.sourceCodePro(
                       fontWeight: FontWeight.bold,
                       fontSize: 20,
                       color:Colors.grey.shade700,

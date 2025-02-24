@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_5/pages/homepage.dart';
+import 'package:project_5/pages/loginPage.dart';
 import 'package:project_5/theme/colors.dart';
 
 
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
             primaryColor: AppColors.bgColor,
             brightness: Brightness.light,
         ),
-        home: VisaPage(),
+        home: LoginPage(),
     );
   }
 }

@@ -1,10 +1,13 @@
 
 import 'package:flutter/material.dart';
+import 'package:project_5/model/customermodel.dart';
 import 'package:project_5/pages/content.dart';
 import 'package:project_5/theme/colors.dart';
 
 class VisaPage extends StatelessWidget {
-  const VisaPage({super.key});
+   VisaPage({super.key, required this.customer_});
+
+  CustomerModel customer_;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class VisaPage extends StatelessWidget {
           decoration: BoxDecoration(
             boxShadow: AppColors.shadows,
           ),
-          child: Content(),
+          child: Content(customer: customer_,),
         ),
       )
     );
